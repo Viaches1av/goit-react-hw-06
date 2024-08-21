@@ -8,9 +8,11 @@ const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectNameFilter);
 
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const filteredContacts = contacts
+    .filter((contact) =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <ul className={css.list}>
